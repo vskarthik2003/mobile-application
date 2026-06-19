@@ -56,7 +56,9 @@ export const mockAppConfig: AppConfig = {
           type: "CountdownTimer",
           props: {
             title: "Flash Sale Ends In",
-            endDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 2).toISOString(),
+            endDate: new Date(
+              Date.now() + 1000 * 60 * 60 * 24 * 2,
+            ).toISOString(),
           },
         },
         {
@@ -202,10 +204,18 @@ export const mockAppConfig: AppConfig = {
       md: 8,
       lg: 16,
     },
+    announcementBar: {
+      textColor: "#242526",
+      bgColor: "#FAF7C3",
+      timeGap: 4,
+      autoPlay: true,
+      messages: ["Hello", "Welcome", "Big Sale Today", "Free Shipping"],
+    },
   },
   branding: {
     appName: "Zuper Store",
-    logoUrl: 'https://zuperapps.com/cdn/shop/files/Frame_2121452720.svg?v=1754553838&width=340',
+    logoUrl:
+      "https://zuperapps.com/cdn/shop/files/Frame_2121452720.svg?v=1754553838&width=340",
   },
   settings: {
     locale: "en-US",

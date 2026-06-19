@@ -27,8 +27,6 @@ export function ThemeProvider({ config, children }: ThemeProviderProps) {
     [config.theme, config.branding],
   );
 
-  console.log(value);
-
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );

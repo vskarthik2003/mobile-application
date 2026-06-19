@@ -15,10 +15,13 @@ export const ThemeSchema = z.object({
     lg: z.number(),
   }),
   announcementBar: z.object({
-    textColor: z.string().default("#000000"),
-    bgColor: z.string().default("#242526"),
-    timeGap: z.number().default(4),
+    textColor: z.string().default("#242526"),
+    bgColor: z.string().default("#FAF7C3"),
+    timeGap: z.number().default(2),
     autoPlay: z.boolean().default(true),
+    messages: z
+      .array(z.string())
+      .default(["Hello", "Welcome", "Big Sale Today", "Free Shipping"]),
   }),
 });
 
