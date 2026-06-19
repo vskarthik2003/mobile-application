@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "myapp",
-    "slug": "myapp",
+    "name": "ZuperApps Mobile Builder",
+    "slug": "zuperapps_mobile_builder",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "icon": "./assets/logos/zuperapps_logo.png",
+    "scheme": "zuperapps_mobile_builder",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -23,7 +23,7 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png",
+      "favicon": "./assets/logos/zuperapps_logo.png",
       "bundler": "metro"
     },
     "plugins": [
