@@ -23,6 +23,11 @@ export const ThemeSchema = z.object({
       .array(z.string())
       .default(["Hello", "Welcome", "Big Sale Today", "Free Shipping"]),
   }),
+  scrollableTextSec: z.object({
+    bgColor: z.string().default("#242526"),
+    textColor: z.string().default("#faf7c3"),
+    duration: z.number().default(10),
+  }),
 });
 
 export const BrandingSchema = z.object({

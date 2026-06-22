@@ -209,7 +209,12 @@ export const mockAppConfig: AppConfig = {
       bgColor: "#FAF7C3",
       timeGap: 4,
       autoPlay: true,
-      messages: ["Hello", "Welcome", "Big Sale Today", "Free Shipping"],
+      messages: ["Hello", "karthik@", "Big Sale Today", "Free Shipping"],
+    },
+    scrollableTextSec: {
+      bgColor: "#242526",
+      textColor: "#FAF7C3",
+      duration: 10,
     },
   },
   branding: {
