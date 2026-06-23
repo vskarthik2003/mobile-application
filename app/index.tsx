@@ -1,9 +1,10 @@
-import React from "react";
-import { ScrollView, View } from "react-native";
+import { AnnouncementBar } from "@/src/components/AnnouncementBar";
+import { DynamicTabBar } from "@/src/components/DynamicTabBar";
+import { SectionRenderer } from "@/src/components/SectionRenderer";
 import { useAppConfig } from "@/src/providers/AppConfigProvider";
 import { useTheme } from "@/src/providers/ThemeProvider";
-import { AnnouncementBar } from "@/src/components/AnnouncementBar";
-import { SectionRenderer } from "@/src/components/SectionRenderer";
+import React from "react";
+import { ScrollView, View } from "react-native";
 
 export default function Home() {
   const { config, activePageId } = useAppConfig();
@@ -39,6 +40,7 @@ export default function Home() {
           <SectionRenderer key={section.id} section={section} />
         ))}
       </ScrollView>
+      <DynamicTabBar />
     </View>
   );
 }

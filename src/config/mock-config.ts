@@ -12,6 +12,9 @@ export const mockAppConfig: AppConfig = {
       visible: true,
     },
     { id: "profile", title: "Profile", icon: "person-outline", visible: true },
+    { id: "cart", title: "Cart", icon: "cart-outline", visible: true },
+    { id: "heart", title: "Heart", icon: "heart-outline", visible: true },
+
   ],
   pages: [
     {
@@ -99,8 +102,8 @@ export const mockAppConfig: AppConfig = {
           type: "Header",
           props: {
             showSearch: true,
-            showCart: false,
-            showMenu: false,
+            showCart: true,
+            showMenu: true,
           },
         },
         {
@@ -185,6 +188,36 @@ export const mockAppConfig: AppConfig = {
                 date: "Jun 18, 2026",
               },
             ],
+          },
+        },
+      ],
+    },
+    {
+      id: "cart",
+      title: "Cart",
+      sections: [
+        {
+          id: "cart-header",
+          type: "Header",
+          props: {
+            showSearch: false,
+            showCart: true,
+            showMenu: true,
+          },
+        },
+      ],
+    },
+    {
+      id: "heart",
+      title: "Heart",
+      sections: [
+        {
+          id: "heart-header",
+          type: "Header",
+          props: {
+            showSearch: false,
+            showCart: true,
+            showMenu: true,
           },
         },
       ],

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Image } from "expo-image";
+import { useAppConfig } from "@/src/providers/AppConfigProvider";
 import { Ionicons } from "@expo/vector-icons";
+import { Image } from "expo-image";
+import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../providers/ThemeProvider";
-import { SectionContainer, SectionHeading, SectionCTA } from "../primitives";
-
 import type { HeaderProps } from "./types";
 
 export function Header({
@@ -18,6 +17,8 @@ export function Header({
   const { theme, branding } = useTheme();
 
   const isCenterLogo = layout === "center-logo";
+  const { config, activePageId, setActivePageId } = useAppConfig();
+
 
   return (
     <View
@@ -56,7 +57,7 @@ export function Header({
           </TouchableOpacity>
         )}
         {showCart && (
-          <TouchableOpacity activeOpacity={0.7} className="relative">
+          <TouchableOpacity activeOpacity={0.7} className="relative" onPress={() => setActivePageId('cart')}>
             <Ionicons name="bag-outline" size={22} color={theme.colors.text} />
             <View
               className="absolute -top-1 -right-1 w-4 h-4 rounded-full items-center justify-center"
