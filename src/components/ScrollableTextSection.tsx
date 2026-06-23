@@ -8,18 +8,28 @@ export default function ScrollableTextSection() {
   const { theme } = useTheme();
 
   const items = ["End of season sale", "Open of the sale", "Shop the sale"];
+  const direction = theme.scrollableTextSec.direction; // "ltr" | "rtl"
 
   useEffect(() => {
     if (!contentWidth) return;
 
-    Animated.loop(
+    const startValue = direction === "rtl" ? 0 : -contentWidth;
+    const endValue = direction === "rtl" ? -contentWidth : 0;
+
+    translateX.setValue(startValue);
+
+    const loop = Animated.loop(
       Animated.timing(translateX, {
-        toValue: -contentWidth,
+        toValue: endValue,
         duration: theme.scrollableTextSec.duration * 1000,
         useNativeDriver: true,
       }),
-    ).start();
-  }, [contentWidth]);
+    );
+
+    loop.start();
+
+    return () => loop.stop();
+  }, [contentWidth, direction]);
 
   return (
     <View
@@ -35,7 +45,24 @@ export default function ScrollableTextSection() {
           transform: [{ translateX }],
         }}
       >
-        {/* First copy */}
+        {/* For LTR we need duplicate BEFORE */}
+        {direction === "ltr" && (
+          <View style={{ flexDirection: "row" }}>
+            {items.map((item, index) => (
+              <Text
+                key={`before-${index}`}
+                style={{
+                  marginRight: 100,
+                  color: theme.scrollableTextSec.textColor,
+                }}
+              >
+                {item}
+              </Text>
+            ))}
+          </View>
+        )}
+
+        {/* Main Content */}
         <View
           onLayout={(e) => {
             setContentWidth(e.nativeEvent.layout.width);
@@ -55,20 +82,22 @@ export default function ScrollableTextSection() {
           ))}
         </View>
 
-        {/* Duplicate copy */}
-        <View style={{ flexDirection: "row" }}>
-          {items.map((item, index) => (
-            <Text
-              key={`dup-${index}`}
-              style={{
-                marginRight: 100,
-                color: theme.scrollableTextSec.textColor,
-              }}
-            >
-              {item}
-            </Text>
-          ))}
-        </View>
+        {/* For RTL we need duplicate AFTER */}
+        {direction === "rtl" && (
+          <View style={{ flexDirection: "row" }}>
+            {items.map((item, index) => (
+              <Text
+                key={`after-${index}`}
+                style={{
+                  marginRight: 100,
+                  color: theme.scrollableTextSec.textColor,
+                }}
+              >
+                {item}
+              </Text>
+            ))}
+          </View>
+        )}
       </Animated.View>
     </View>
   );

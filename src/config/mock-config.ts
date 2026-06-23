@@ -215,6 +215,7 @@ export const mockAppConfig: AppConfig = {
       bgColor: "#242526",
       textColor: "#FAF7C3",
       duration: 10,
+      direction: "ltr",
     },
   },
   branding: {
