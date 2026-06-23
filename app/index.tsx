@@ -11,14 +11,18 @@ export default function Home() {
   const { theme } = useTheme();
 
   // Find the currently active page configuration
-  const page = config.pages.find((p) => p.id === activePageId) || config.pages[0];
+  const page =
+    config.pages.find((p) => p.id === activePageId) || config.pages[0];
 
   if (!page) {
     return null;
   }
 
   return (
-    <View className="flex-1" style={{ backgroundColor: theme.colors.background }}>
+    <View
+      className="flex-1"
+      style={{ backgroundColor: theme.colors.background }}
+    >
       {/* Render the AnnouncementBar dynamically from theme settings */}
       {theme.announcementBar && (
         <AnnouncementBar

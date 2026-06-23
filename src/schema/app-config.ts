@@ -23,12 +23,6 @@ export const ThemeSchema = z.object({
       .array(z.string())
       .default(["Hello", "Welcome", "Big Sale Today", "Free Shipping"]),
   }),
-  scrollableTextSec: z.object({
-    bgColor: z.string().default("#242526"),
-    textColor: z.string().default("#faf7c3"),
-    duration: z.number().default(10),
-    direction: z.enum(["ltr", "rtl"]),
-  }),
 });
 
 export const BrandingSchema = z.object({
@@ -83,3 +77,10 @@ export type AppConfig = z.infer<typeof AppConfigSchema>;
 export function parseAppConfig(input: unknown): AppConfig {
   return AppConfigSchema.parse(input);
 }
+
+// scrollableTextSec: z.object({
+//     bgColor: z.string().default("#242526"),
+//     textColor: z.string().default("#faf7c3"),
+//     duration: z.number().default(10),
+//     direction: z.enum(["ltr", "rtl"]),
+//   }),

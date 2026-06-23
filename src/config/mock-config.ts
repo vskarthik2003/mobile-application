@@ -13,8 +13,7 @@ export const mockAppConfig: AppConfig = {
     },
     { id: "profile", title: "Profile", icon: "person-outline", visible: true },
     { id: "cart", title: "Cart", icon: "cart-outline", visible: true },
-    { id: "heart", title: "Heart", icon: "heart-outline", visible: true },
-
+    { id: "heart", title: "Favorites", icon: "heart-outline", visible: true },
   ],
   pages: [
     {
@@ -39,6 +38,16 @@ export const mockAppConfig: AppConfig = {
             imageUrl:
               "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
             ctaLabel: "Shop Now",
+          },
+        },
+        {
+          id: "home-scrolltext",
+          type: "ScrollableTextSection",
+          props: {
+            bgColor: "#242526",
+            textColor: "#FAF7C3",
+            duration: 10,
+            direction: "ltr",
           },
         },
         {
@@ -209,7 +218,7 @@ export const mockAppConfig: AppConfig = {
     },
     {
       id: "heart",
-      title: "Heart",
+      title: "Favorites",
       sections: [
         {
           id: "heart-header",
@@ -243,12 +252,6 @@ export const mockAppConfig: AppConfig = {
       timeGap: 4,
       autoPlay: true,
       messages: ["Hello", "karthik@", "Big Sale Today", "Free Shipping"],
-    },
-    scrollableTextSec: {
-      bgColor: "#242526",
-      textColor: "#FAF7C3",
-      duration: 10,
-      direction: "ltr",
     },
   },
   branding: {
