@@ -5,4 +5,5 @@ export interface HeaderProps {
   showCart?: boolean;
   showMenu?: boolean;
   layout?: "default" | "center-logo";
+  bgColor?: string;
 }

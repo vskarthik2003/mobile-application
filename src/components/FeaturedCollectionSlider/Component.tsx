@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Image } from "expo-image";
-import { Ionicons } from "@expo/vector-icons";
-import { useTheme } from "../../providers/ThemeProvider";
-import { SectionContainer, SectionHeading, SectionCTA } from "../primitives";
-import { ScrollView } from "react-native";
+import React from "react";
+import { View, ScrollView } from "react-native";
+import { useRouter } from "expo-router";
+import { SectionContainer, SectionHeading, ProductCard, EmptyState } from "../primitives";
 import { useCollection } from "../../hooks/useCollection";
-import { ProductCard, CollectionCard, EmptyState } from "../primitives";
 import type { FeaturedCollectionSliderProps } from "./types";
 
 export function FeaturedCollectionSlider({
@@ -16,11 +12,12 @@ export function FeaturedCollectionSlider({
   subtitle,
   limit,
   showPrices,
-}: FeaturedCollectionSliderProps) {
+}: Readonly<FeaturedCollectionSliderProps>) {
   const { products, loading, error } = useCollection(collectionId);
-  const { theme } = useTheme();
 
   const displayedProducts = products ? products.slice(0, limit) : [];
+
+  const router = useRouter();
 
   return (
     <SectionContainer
@@ -31,7 +28,12 @@ export function FeaturedCollectionSlider({
       paddingX="none"
     >
       <View className="px-4">
-        <SectionHeading title={title} subtitle={subtitle} actionLabel="View All" onActionPress={() => {}} />
+        <SectionHeading
+          title={title}
+          subtitle={subtitle}
+          actionLabel="View All"
+          onActionPress={() => router.push("/products")}
+        />
       </View>
 
       {displayedProducts.length === 0 && !loading ? (
@@ -47,7 +49,11 @@ export function FeaturedCollectionSlider({
         >
           {displayedProducts.map((p) => (
             <View key={p.id} style={{ width: 150 }}>
-              <ProductCard product={p} showPrices={showPrices} />
+              <ProductCard
+                product={p}
+                showPrices={showPrices}
+                onPress={() => router.push(`/products/${p.id}`)}
+              />
             </View>
           ))}
         </ScrollView>

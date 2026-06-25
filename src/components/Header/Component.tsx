@@ -13,16 +13,20 @@ export function Header({
   showCart,
   showMenu,
   layout,
+  bgColor,
 }: HeaderProps) {
   const { theme, branding } = useTheme();
 
   const isCenterLogo = layout === "center-logo";
   const { config, activePageId, setActivePageId } = useAppConfig();
 
-
   return (
     <View
-      style={{ backgroundColor: theme.colors.background, borderBottomWidth: 1, borderBottomColor: theme.colors.border }}
+      style={{
+        backgroundColor: bgColor,
+        borderBottomWidth: 1,
+        borderBottomColor: theme.colors.border,
+      }}
       className="flex-row items-center justify-between px-5 py-4 w-full"
     >
       {/* Left Icon */}
@@ -35,7 +39,9 @@ export function Header({
       </View>
 
       {/* Brand logo/name */}
-      <View className={`flex-1 ${isCenterLogo ? "items-center" : "items-start"}`}>
+      <View
+        className={`flex-1 ${isCenterLogo ? "items-center" : "items-start"}`}
+      >
         {logoUrl || branding.logoUrl ? (
           <Image
             source={{ uri: logoUrl || branding.logoUrl }}
@@ -43,7 +49,10 @@ export function Header({
             contentFit="contain"
           />
         ) : (
-          <Text className="text-xl font-bold italic tracking-tight" style={{ color: theme.colors.primary }}>
+          <Text
+            className="text-xl font-bold italic tracking-tight"
+            style={{ color: theme.colors.primary }}
+          >
             {branding.appName}
           </Text>
         )}
@@ -53,11 +62,19 @@ export function Header({
       <View className="flex-row items-center gap-4 w-16 justify-end">
         {showSearch && (
           <TouchableOpacity activeOpacity={0.7}>
-            <Ionicons name="search-outline" size={22} color={theme.colors.text} />
+            <Ionicons
+              name="search-outline"
+              size={22}
+              color={theme.colors.text}
+            />
           </TouchableOpacity>
         )}
         {showCart && (
-          <TouchableOpacity activeOpacity={0.7} className="relative" onPress={() => setActivePageId('cart')}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            className="relative"
+            onPress={() => setActivePageId("cart")}
+          >
             <Ionicons name="bag-outline" size={22} color={theme.colors.text} />
             <View
               className="absolute -top-1 -right-1 w-4 h-4 rounded-full items-center justify-center"

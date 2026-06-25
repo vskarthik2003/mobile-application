@@ -35,6 +35,8 @@ export const NavigationItemSchema = z.object({
   title: z.string(),
   icon: z.string().default("home-outline"),
   visible: z.boolean().default(true),
+  order: z.number().int().optional(),
+  badge: z.string().optional(),
 });
 
 export const SectionSchema = z.object({
@@ -61,6 +63,10 @@ export const AppConfigSchema = z.object({
   revision: z.number().int(),
   navigation: z.array(NavigationItemSchema).min(1).max(5),
   pages: z.array(PageSchema),
+  /** Collection landing page sections — keyed by collection handle, or "default" for fallback */
+  collectionPages: z.record(z.string(), z.array(SectionSchema)).optional(),
+  /** Product detail page sections — applies to all PDPs */
+  productPage: z.array(SectionSchema).optional(),
   theme: ThemeSchema,
   branding: BrandingSchema,
   settings: AppSettingsSchema,
