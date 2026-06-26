@@ -1,5 +1,6 @@
 // src/components/product/ProductInfo.tsx
 
+import { useCart } from "@/src/providers/CartProvider";
 import { useTheme } from "@/src/providers/ThemeProvider";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
@@ -11,6 +12,7 @@ interface Props {
 
 export default function ProductHeader({ product }: Props) {
   const { theme } = useTheme();
+  const { addToCart, cart } = useCart();
 
   const variants = product.variants.edges;
   const data = variants.map((variant: any) => ({
@@ -20,6 +22,19 @@ export default function ProductHeader({ product }: Props) {
   const [selectedVariant, setSelectedVariant] = useState(variants[0]?.node.id);
 
   const [qty, setQty] = useState(1);
+
+  const addProductToCart = (product: any) => {
+    console.log(product);
+    addToCart({
+      id: product.id.split("/").pop(),
+      image: product.featuredImage.url,
+      price: product.variants.edges[0].node.price.amount,
+      productId: product.id.split("/").pop(),
+      quantity: qty,
+      title: product.title,
+      variantId: selectedVariant,
+    });
+  };
 
   return (
     <View className="px-4">
@@ -184,8 +199,11 @@ export default function ProductHeader({ product }: Props) {
         <Text className="text-lg">I want to send this as a gift</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity className="mt-8 h-14 border border-gray-300 justify-center items-center">
-        <Text className="text-gray-400 text-lg">Sold out</Text>
+      <TouchableOpacity
+        className="mt-8 h-14 border border-gray-300 justify-center items-center"
+        onPress={() => addProductToCart(product)}
+      >
+        <Text className="text-gray-400 text-lg">Add to Bag</Text>
       </TouchableOpacity>
 
       <TouchableOpacity className="mt-4 h-14 bg-black justify-center items-center">

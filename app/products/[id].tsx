@@ -1,4 +1,6 @@
 // app/product/[id].tsx
+import AnnouncementBar from "@/src/components/AnnouncementBar";
+import { Header } from "@/src/components/Header";
 import ProductGallery from "@/src/components/Products/ProductGallery";
 import ProductHeader from "@/src/components/Products/ProductHeader";
 import ProductDetailsJson from "@/src/config/mock-products";
@@ -15,18 +17,29 @@ export default function ProductDetailScreen() {
   const { theme } = useTheme();
 
   return (
-    <View
-      style={{ flex: 1, backgroundColor: theme.colors.background }}
-      className="p-4"
-    >
-      <TouchableOpacity onPress={() => router.back()} className="mb-4">
-        <Text style={{ color: theme.colors.primary }}>← Go Back</Text>
-      </TouchableOpacity>
+    <View style={{ flex: 1, backgroundColor: theme.colors.background }}>
+      <View>
+        <AnnouncementBar />
+        <Header />
+      </View>
+      <View
+        // style={{ flex: 1, backgroundColor: theme.colors.background }}
+        className="p-4"
+      >
+        <TouchableOpacity onPress={() => router.back()} className="mb-4">
+          <Text style={{ color: theme.colors.primary }}>← Go Back</Text>
+        </TouchableOpacity>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <ProductGallery product={MOCK_PRODUCTS} />
-        <ProductHeader product={MOCK_PRODUCTS} />
-      </ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: 150,
+          }}
+        >
+          <ProductGallery product={MOCK_PRODUCTS} />
+          <ProductHeader product={MOCK_PRODUCTS} />
+        </ScrollView>
+      </View>
     </View>
   );
 }

@@ -27,7 +27,7 @@ export default function FeaturedCollectionGrid({
   collectionHandle,
   title,
   columns = 2,
-  limit = 6,
+  limit = 10,
   showSaleBadge = true,
   cardStyle = "minimal",
 }: FeaturedCollectionGridProps) {
