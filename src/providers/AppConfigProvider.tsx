@@ -34,7 +34,6 @@ export function AppConfigProvider({ children }: PropsWithChildren) {
 
     try {
       const nextConfig = await loadAppConfig();
-      // console.log("[Preview] Config loaded:", nextConfig);
       setConfig(nextConfig);
       setActivePageId((current) => {
         const pageExists = nextConfig.pages.some((page) => page.id === current);

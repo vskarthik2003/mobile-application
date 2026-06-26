@@ -19,7 +19,6 @@ export async function loadAppConfig(): Promise<AppConfig> {
     }
 
     const json = await response.json();
-    // console.log("[Preview] Config loaded:", json);
     return parseAppConfig(json.data ?? json);
   } catch (error) {
     console.warn("[Preview] Falling back to mock config:", error);
