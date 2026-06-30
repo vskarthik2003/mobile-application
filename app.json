@@ -10,18 +10,20 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.karthi-vs.zuperapps-mobile-builder"
+      "bundleIdentifier": "com.karthi-vs.zuperapps-mobile-builder",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/logos/zuperapps_logo.png",
+        "backgroundImage": "./assets/logos/zuperapps_logo.png",
+        "monochromeImage": "./assets/logos/zuperapps_logo.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.karthi_vs.zuperapps_mobile_builder"
+      "package": "com.karthi_vs.zuperapps_mobile_builder",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "output": "static",
@@ -33,13 +35,20 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/logos/zuperapps_logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",
           "dark": {
             "backgroundColor": "#000000"
           }
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/logos/notification-icon.png",
+          "color": "#0F62FE"
         }
       ]
     ],

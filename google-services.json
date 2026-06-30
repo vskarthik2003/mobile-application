@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "475047902686",
+    "project_id": "push-notify-sandbox",
+    "storage_bucket": "push-notify-sandbox.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475047902686:android:234c8764a76b9d70f0314f",
+        "android_client_info": {
+          "package_name": "com.karthi_vs.zuperapps_mobile_builder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIvszyBU2I4PLThQQjAorlow_sAYK6Raw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
